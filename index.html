@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Crowd Map</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">School Safety Dashboard</p>
+          <h1>School Crowd Map</h1>
+        </div>
+
+        <div class="legend">
+          <span><i class="dot low"></i>Low</span>
+          <span><i class="dot medium"></i>Moderate</span>
+          <span><i class="dot high"></i>High</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="map-panel">
+          <div class="school-map">
+            <div class="area gate" data-area="Main Gate" data-status="medium">
+              <h3>Main Gate</h3>
+              <p>Entry</p>
+            </div>
+
+            <div class="area admin" data-area="Admin Office" data-status="low">
+              <h3>Admin</h3>
+              <p>Office</p>
+            </div>
+
+            <div class="area corridor selected" data-area="Main Corridor" data-status="high">
+              <h3>Corridor</h3>
+              <p>Walking area</p>
+            </div>
+
+            <div class="area library" data-area="Library" data-status="medium">
+              <h3>Library</h3>
+              <p>Reading room</p>
+            </div>
+
+            <div class="area canteen" data-area="Canteen" data-status="high">
+              <h3>Canteen</h3>
+              <p>Lunch area</p>
+            </div>
+
+            <div class="area lab" data-area="Science Lab" data-status="medium">
+              <h3>Science Lab</h3>
+              <p>Practical room</p>
+            </div>
+
+            <div class="area class-a" data-area="Classroom A" data-status="low">
+              <h3>Class A</h3>
+              <p>Grade 8</p>
+            </div>
+
+            <div class="area class-b" data-area="Classroom B" data-status="medium">
+              <h3>Class B</h3>
+              <p>Grade 9</p>
+            </div>
+
+            <div class="area class-c" data-area="Classroom C" data-status="high">
+              <h3>Class C</h3>
+              <p>Grade 10</p>
+            </div>
+
+            <div class="area staff" data-area="Staff Room" data-status="low">
+              <h3>Staff Room</h3>
+              <p>Teachers</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="info-panel">
+          <div class="card selected-area">
+            <p class="label">Selected area</p>
+            <h2 id="selectedName">Main Corridor</h2>
+            <div class="status-row">
+              <span class="status-badge high" id="selectedStatus">High</span>
+              <span id="selectedPeople">38 students</span>
+            </div>
+          </div>
+
+          <div class="card controls">
+            <p class="label">Update crowd level</p>
+            <div class="button-group">
+              <button class="level-btn" data-level="low">Low</button>
+              <button class="level-btn" data-level="medium">Moderate</button>
+              <button class="level-btn" data-level="high">High</button>
+            </div>
+          </div>
+
+          <div class="card summary">
+            <p class="label">School summary</p>
+            <ul>
+              <li>Most crowded: <strong id="mostCrowded">Canteen</strong></li>
+              <li>Quietest: <strong id="leastCrowded">Staff Room</strong></li>
+              <li>Suggested route: <strong>Use side corridor</strong></li>
+            </ul>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
