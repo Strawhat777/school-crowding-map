@@ -1,0 +1,293 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #eef6ff 0%, #dfeeff 100%);
+  color: #1d2a39;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #3668b2;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 8px 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.legend {
+  display: flex;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.low {
+  background: #2ecc71;
+}
+
+.dot.medium {
+  background: #f1c40f;
+}
+
+.dot.high {
+  background: #e74c3c;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: 20px;
+}
+
+.map-panel,
+.card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid #d8e6ff;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(44, 62, 80, 0.08);
+}
+
+.map-panel {
+  padding: 18px;
+}
+
+.school-map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  grid-template-rows: repeat(4, 110px);
+  gap: 12px;
+  min-height: 520px;
+  background: #f3f8ff;
+  border-radius: 18px;
+  padding: 16px;
+  border: 2px solid #dcecff;
+}
+
+.area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 18px;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  color: #0d1d2d;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.area:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.area h3,
+.area p {
+  margin: 4px 0;
+}
+
+.area h3 {
+  font-size: 1.1rem;
+}
+
+.area p {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.area.low {
+  background: rgba(46, 204, 113, 0.75);
+}
+
+.area.medium {
+  background: rgba(241, 196, 15, 0.75);
+}
+
+.area.high {
+  background: rgba(231, 76, 60, 0.8);
+  color: white;
+}
+
+.gate {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.admin {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.corridor {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.library {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+
+.canteen {
+  grid-column: 4 / 5;
+  grid-row: 2 / 4;
+}
+
+.lab {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.class-a {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+}
+
+.class-b {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+
+.class-c {
+  grid-column: 3 / 4;
+  grid-row: 3 / 5;
+}
+
+.staff {
+  grid-column: 4 / 5;
+  grid-row: 4 / 5;
+}
+
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card {
+  padding: 18px 20px;
+}
+
+.label {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: #486a98;
+}
+
+.selected-area h2 {
+  margin: 0 0 14px;
+  font-size: 2rem;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
+  background: #e74c3c;
+}
+
+.status-badge.low {
+  background: #2ecc71;
+}
+
+.status-badge.medium {
+  background: #f1c40f;
+  color: #1d2a39;
+}
+
+.status-badge.high {
+  background: #e74c3c;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.level-btn {
+  border: none;
+  background: #dfeeff;
+  color: #1d2a39;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.level-btn:hover {
+  background: #cfe0ff;
+}
+
+.summary ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .school-map {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, 90px);
+  }
+}
