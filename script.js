@@ -32,35 +32,48 @@ function updateSummary() {
     status: getAreaStatus(area)
   }));
 
-  const order = { low: 1, medium: 2, high: 3 };
+  const sortedByCrowd = [...areas].sort((a, b) => {
+    const order = { low: 1, medium: 2, high: 3 };
+    return order[b.status] - order[a.status];
+  });
 
-  const mostCrowded = [...areas].sort((a, b) => order[b.status] - order[a.status])[0].name;
-  const leastCrowded = [...areas].sort((a, b) => order[a.status] - order[b.status])[0].name;
+  mostCrowdedEl.textContent = sortedByCrowd[0].name;
+  leastCrowdedEl.textContent = [...areas].sort((a, b) => {
+    const order = { low: 1, medium: 2, high: 3 };
+    return order[a.status] - order[b.status];
+  })[0].name;
+}
 
-  mostCrowdedEl.textContent = mostCrowded;
-  leastCrowdedEl.textContent = leastCrowded;
+function renderAreas() {
+  areaEls.forEach((area) => {
+    const status = getAreaStatus(area);
+    area.classList.remove('low', 'medium', 'high');
+    area.classList.add(status);
+  });
+
+  updateSummary();
+  const firstArea = document.querySelector('.corridor');
+  updateSelectedArea(firstArea);
 }
 
 areaEls.forEach((area) => {
-  area.addEventListener('click', () => {
-    areaEls.forEach((item) => item.classList.remove('selected'));
-    area.classList.add('selected');
-    updateSelectedArea(area);
-  });
+  area.addEventListener('click', () => updateSelectedArea(area));
 });
 
 document.querySelectorAll('.level-btn').forEach((button) => {
   button.addEventListener('click', () => {
     const selectedArea = document.querySelector('.area.selected') || document.querySelector('.corridor');
-
     selectedArea.dataset.status = button.dataset.level;
     selectedArea.classList.remove('low', 'medium', 'high');
     selectedArea.classList.add(button.dataset.level);
-
+    selectedArea.classList.add('selected');
     updateSelectedArea(selectedArea);
     updateSummary();
   });
 });
 
-updateSummary();
-updateSelectedArea(document.querySelector('.area.selected'));
+renderAreas();
+
+const firstArea = document.querySelector('.corridor');
+firstArea.classList.add('selected');
+updateSelectedArea(firstArea);
